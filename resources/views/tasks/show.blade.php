@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>
+<head>
+    <title>
+        
+    </title>
+</head>
 
-        </title>
-    </head>
+
 <body>
-    <h1>{{$task->body}}</h1>
+	<h1>{{ $task->body }}</h1> 
 </body>
-</html>
 
+</html> 

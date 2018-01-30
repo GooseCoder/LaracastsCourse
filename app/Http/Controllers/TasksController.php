@@ -2,18 +2,22 @@
 
 namespace App\Http\Controllers;
 
+//use Illuminate\Http\Request;
 use App\Task;
-use Illuminate\Http\Request;
 
 class TasksController extends Controller
 {
+    //method call by the TaskController@index in the web routes file
     public function index() {
-        $tasks = Task::all();
 
-        return view('tasks.index', compact('tasks'));
+    	$tasks = Task::all();
+		return view('tasks.index', compact('tasks') );
+    
     }
 
     public function show(Task $task) {
-         return view('tasks.show', compact('task'));
+    	//Controller then pass this data to the view. The controller delegates a task.
+		return view('tasks.show', compact('task') );
     }
+
 }

@@ -6,5 +6,8 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
 
 class Model extends Eloquent
 {
-    protected $guarded = [];
+    //FILLABLE PROPERTY : Allow us to give only the names of the fields that we are ok to mass assign.
+    //protected $fillable = ['title', 'body' ]; 
+    protected $guarded = []; 
+
 }
