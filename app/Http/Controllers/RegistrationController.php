@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\Welcome;
 use Illuminate\Http\Request;
 
 use App\User;
+use PharIo\Manifest\Email;
 
 class RegistrationController extends Controller
 {
@@ -32,7 +34,7 @@ class RegistrationController extends Controller
    		//\Auth::login();
    		 
    		auth()->login($user);
-
+        \Mail::to($user)->send(new Welcome($user));
    		return redirect()->home(); 
    }
 
