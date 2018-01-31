@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Repositories\Posts;
+use App\Tag;
 use Illuminate\Http\Request;
 
 use App\Post;
@@ -16,13 +17,12 @@ class PostsController extends Controller
         $this->middleware('auth')->except(['index', 'show' ]);
     }
 
-	public function index(Posts $posts) {
-//        dd($posts);
+	public function index() {
 		// $posts = Posts::orderBy('created_at', 'desc')->get();
-//        $posts = Posts::latest()
-//                ->filter(request(['month', 'year']) )
-//                ->get();
-        $posts = $posts->all();
+//        $posts = $posts->all();
+        $posts = Posts::latest()
+                ->filter(request(['month', 'year']) )
+                ->get();
 		return view('posts.index', compact('posts') );
     }
 
@@ -49,6 +49,7 @@ class PostsController extends Controller
             new Post(request(['title', 'body' ]) 
         ));
 
+        session()->flash('message', 'Your post has been published');
     	//Create a new post using the request data . saving it to the database and then redirect.
 		return redirect('/');
 
